@@ -1,0 +1,271 @@
+@mixin mobile-screen {
+  @media screen and (max-width: 480px) {
+    @content;
+  }
+}
+@mixin tablet-screen {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+@mixin laptop-screen {
+  @media screen and (max-width: 1200px) {
+    @content;
+  }
+}
+
+.home {
+  height: 100vh;
+  background-color: #a7bcff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__container {
+    display: flex;
+    border: 1px solid white;
+    border-radius: 1rem;
+    height: 65%;
+    width: 80%;
+    overflow: hidden;
+    @include tablet-screen() {
+      width: 90%;
+    }
+    .sidebar {
+      flex: 1;
+      background-color: #3e3c61;
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem;
+        background-color: #2f2d52;
+        .logo {
+          color: white;
+          font-size: 1.2rem;
+          @include tablet-screen() {
+            display: none;
+          }
+        }
+        .user__info {
+          display: flex;
+          align-items: center;
+          gap: 0.8rem;
+          color: white;
+          img {
+            height: 29px;
+            width: 29px;
+            background-color: #fff;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+          button {
+            border: none;
+            padding: 0.2rem 0.4rem;
+            cursor: pointer;
+            border-radius: 0.2rem;
+            &:hover {
+              opacity: 0.8;
+            }
+          }
+        }
+      }
+      .search {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 0.5rem;
+        &__input {
+          margin: auto;
+          margin-bottom: 0.5rem;
+          input {
+            color: lightgray;
+            padding: 0.5rem 0.2rem;
+            border: none;
+            background-color: #3e3c61;
+            border-bottom: 1px solid #2f2d52;
+            &:focus {
+              outline: none;
+            }
+          }
+        }
+        &__user {
+          display: flex;
+          gap: 1rem;
+          padding: 0.6rem 0.5rem;
+          border-bottom: 1px solid gray;
+
+          &:hover {
+            background-color: #2f2d52;
+          }
+          img {
+            background: #fff;
+            border-radius: 50%;
+            height: 34px;
+            width: 34px;
+            object-fit: cover;
+            align-self: center;
+            justify-self: center;
+          }
+          &--info {
+            color: white;
+            display: flex;
+            flex-direction: column;
+            .last__message {
+              color: lightgray;
+            }
+          }
+        }
+      }
+      .chats {
+        .chat {
+          display: flex;
+          gap: 1rem;
+          padding: 0.2rem 0.5rem;
+          &:hover {
+            background-color: #2f2d52;
+          }
+          img {
+            background: #fff;
+            border-radius: 50%;
+            height: 34px;
+            width: 34px;
+            object-fit: cover;
+            align-self: center;
+            justify-self: center;
+          }
+          &__user--info {
+            color: white;
+            display: flex;
+            flex-direction: column;
+            .last__message {
+              color: lightgray;
+            }
+          }
+        }
+      }
+    }
+    .chat {
+      flex: 2;
+      &__info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        height: 50px;
+        background-color: #5d5b8d;
+        color: white;
+        .icons {
+          display: flex;
+          gap: 0.6rem;
+          img {
+            height: 24px;
+            width: 24px;
+            cursor: pointer;
+            &:hover {
+              opacity: 0.8;
+            }
+          }
+        }
+      }
+      .messages {
+        background-color: #ddddf7;
+        height: calc(100% - 100px);
+        overflow-y: scroll;
+        .message {
+          display: flex;
+          align-items: flex-end;
+          padding: 0.4rem;
+          gap: 1rem;
+          &.owner {
+            flex-direction: row-reverse;
+            .message__content {
+              align-items: flex-end;
+              margin-top: 3rem;
+              p {
+                background-color: #5d5b8d;
+                color: white;
+                max-width: 300px;
+                border-radius: 10px 0 10px 10px;
+              }
+            }
+          }
+          &__info {
+            align-self: flex-start;
+            display: flex;
+            flex-direction: column;
+            .message__time {
+              color: gray;
+              font-size: 0.8rem;
+            }
+            img {
+              margin: auto;
+              height: 34px;
+              width: 34px;
+              object-fit: cover;
+              border-radius: 50%;
+            }
+          }
+          .message__content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            margin-top: 3rem;
+            p {
+              width: max-content;
+              background-color: #fff;
+              padding: 0.4rem;
+              border-radius: 0 10px 10px 10px;
+            }
+            img {
+              width: 60%;
+            }
+          }
+        }
+      }
+      .input {
+        padding: 10px;
+        height: 50px;
+        background-color: #fff;
+        .chat__input {
+          display: flex;
+          align-items: center;
+          input {
+            border: none;
+            border-bottom: 1px solid lightgray;
+            color: #2f2d52;
+            flex: 1;
+            outline: none;
+            padding: 0.3rem;
+
+            &::placeholder {
+              color: rgb(175, 175, 175);
+            }
+          }
+          button {
+            flex: 0.1;
+            border: none;
+            padding: 0.4rem;
+            background-color: #8da4f1;
+            color: white;
+            border-radius: 0.2rem;
+            cursor: pointer;
+            &:hover {
+              opacity: 0.8;
+            }
+          }
+          label {
+            flex: 0.08;
+            img {
+              height: 24px;
+              width: 24px;
+              cursor: pointer;
+              &:hover {
+                opacity: 0.8;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
