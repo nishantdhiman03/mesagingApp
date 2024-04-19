@@ -28,7 +28,7 @@
     width: 100%;
     overflow: hidden;
     @include tablet-screen() {
-      width: 90%;
+      width: 100%;
     }
     .sidebar {
       flex: 1;
